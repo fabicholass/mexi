@@ -159,33 +159,31 @@
         height: auto;
       }
       
-      .downloadBtn1,
       .flpsBtn1,
-      .galleryBtn1 {
-        animation: fadeInThing 1s forwards;
-      }
-      
-      .viernesBtn1,
-      .creditosBtn1 {
-        animation: fadeInFromRight 1s forwards;
-      }
-      
-      .downloadBtn2,
-      .flpsBtn2,
-      .galleryBtn2,
-      .viernesBtn2,
-      .creditosBtn2 {
-        animation: hoverThing1 0.5s;
-      }
-      
-      .downloadBtn2:hover,
-      .flpsBtn2:hover,
-      .galleryBtn2:hover,
-      .viernesBtn2:hover,
-      .creditosBtn2:hover {
-        animation: hoverThing2 0.25s forwards;
-      }
-      
+.downloadBtn1,
+.galleryBtn1 {
+  animation: fadeInThing 1s forwards;
+  animation-fill-mode: forwards;
+}
+
+.flpsBtn2,
+.downloadBtn2,
+.galleryBtn2,
+.viernesBtn2,
+.creditosBtn2 {
+  animation: hoverThing1 0.5s forwards;
+  animation-fill-mode: forwards;
+}
+
+.flpsBtn2:hover,
+.downloadBtn2:hover,
+.galleryBtn2:hover,
+.viernesBtn2:hover,
+.creditosBtn2:hover {
+  animation: hoverThing2 0.25s forwards;
+  animation-fill-mode: forwards;
+}
+
     </style>
   </head>
   
