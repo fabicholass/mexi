@@ -8,211 +8,36 @@
     <meta name="HandheldFriendly" content="true" />
     <meta name="apple-mobile-web-app-capable" content="YES" />
     <link rel="icon" type="image/x-icon" href="/images/MexiWebsiteLogo.ico">
-    <link rel="preload" href="/images/FondoDescarga.png" as="image" />
-    <link rel="preload" href="/images/FondoRegular.png" as="image" />
-    <link rel="preload" href="/images/downloadBtn.png" as="image" />
-    <link rel="preload" href="/images/flpsBtn.png" as="image" />
-    <link rel="preload" href="/images/galleryBtn.png" as="image" />
-    <link rel="preload" href="/images/viernesBtn.png" as="image" />
-    <link rel="preload" href="/images/creditosBtn.png" as="image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans">
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
 
     <style>
-      @font-face { 
-        font-family: 'HelveticaCE-Bold'; 
-        src: url('/HelveticaCE-Bold.otf') format('opentype'); 
-        font-display: swap;
-      }
-      
-      /* ANIMACIONES */
-      @keyframes hoverThing1 {
-        0% {
-          transform: scale(1.125)
-        }
-        100% {
-          transform: scale(1)
-        }
-      }
-      
-      @keyframes hoverThing2 {
-        0% {
-          transform: scale(1)
-        }
-        100% {
-          transform: scale(1.125)
-        }
-      }
-      
-      @keyframes fadeInThing {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      
-      @keyframes fadeInFromTop {
-        0% {
-          opacity: 0;
-          transform: translateY(-50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-  
-      @keyframes fadeInFromRight {
-        0% {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-  
-      @keyframes fadeInFromLeft {
-        0% {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      body {
-        background: url("images/FondoDescarga.png") no-repeat center center fixed;
-        background-size: cover;
-        transform: scale(0.6);
-        font-family: "HelveticaCE-Bold", sans-serif;
-        overflow: hidden;
-      }
-
-      .noticias {
-        opacity: 0;
-        background: url("images/checker.gif");
-        color: white;
-        width: 100%;
-        text-align: center;
-      }
-
-      .center {
-        position: relative;
-        top: 0px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-grow: 1;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .logo {
-        position: relative;
-        top: 35px;
-        display: flex;
-        justify-content: center; /* Centra horizontalmente */
-        align-items: center;
-        width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
-        margin-bottom: 20px; /* Opcional: espacio debajo del logo */
-      }
-
-      .logo img {
-        max-width: 50vw; /* Ajuste del tamaño para pantallas pequeñas */
-        height: auto;
-        animation: fadeInFromTop 1.5s forwards;
-      }
-
-      .downloadlist {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .downloadlist img {
-        max-width: 100%;
-        height: auto;
-      }
-      
-      .Gallery {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .Gallery img {
-        max-width: 100%;
-        height: auto;
-        margin: 20px 0;
-      }
-
-      .right {
+      #loading-screen {
         position: fixed;
-        bottom: -350px;
-        right: -630px;
+        width: 100%;
+        height: 100%;
+        background: #000;
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+        font-size: 24px;
       }
-
-      .right img {
-        width: 75px;
-        height: auto;
-      }
-      
-      .downloadBtn1,
-      .flpsBtn1,
-      .galleryBtn1 {
-        animation: fadeInThing 1s forwards;
-      }
-      
-      .viernesBtn1,
-      .creditosBtn1 {
-        animation: fadeInFromRight 1s forwards;
-      }
-      
-      .downloadBtn2,
-      .flpsBtn2,
-      .galleryBtn2,
-      .viernesBtn2,
-      .creditosBtn2 {
-        animation: hoverThing1 0.5s;
-      }
-      
-      .downloadBtn2:hover,
-      .flpsBtn2:hover,
-      .galleryBtn2:hover,
-      .viernesBtn2:hover,
-      .creditosBtn2:hover {
-        animation: hoverThing2 0.25s forwards;
-      }
-
-      
     </style>
-
   </head>
-  
+
   <body>
-    <!-- <audio controls autoplay loop>
-      <source src="/audio/midicali.mp3" type="audio/mpeg">
-    </audio> -->
-    
+    <div id="loading-screen">
+  <h1>Loading...</h1>
+</div>
+
     <div class="noticias">
       <marquee>
         <h1>MEXIPISO V2 IS OUT NOW!</h1>
       </marquee>
     </div>
-    
+
     <div class="center">
       <div class="logo">
         <img src="/images/CarlosLogo.png" alt="Mexipiso Logo">
@@ -232,7 +57,7 @@
         </a>
       </div>
     </div>
-    
+
     <div class="right">
       <div class="viernesBtn1">
         <a href="https://esviernes.com/"> 
@@ -245,5 +70,12 @@
         </a>
       </div>
     </div>
+
+    <script>
+      window.addEventListener('load', function () {
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.display = 'none';
+      });
+    </script>
   </body>
 </html>
