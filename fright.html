@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jongle</title>
+    <link rel="icon" href="data:," />
+    <style>
+        body, html {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+#shaderCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* El shader se queda en el fondo */
+    pointer-events: none; /* Evita que interfiera con la interacción del contenido */
+}
+
+.content {
+    position: relative;
+    z-index: 1; /* El contenido está por encima del shader */
+    color: white;
+    animation: fadeIn 2s ease-out;
+}
+
+h1 {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2rem;
+    transition: color 0.5s ease;
+    cursor: pointer;
+}
+
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-out;
+        }
+
+        h1 {
+            color: white;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 2rem;
+            transition: color 0.5s ease;
+            cursor: pointer;
+        }
+
+        #inputBox {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid white;
+            background-color: transparent;
+            color: white;
+            outline: none;
+            width: 200px;
+        }
+
+        .fade-out {
+            animation: fadeOut 2s ease-out forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="shaderCanvas"></div>
+    <div class="content">
+        <h1 id="text">WELCOME</h1>
+        <input type="text" id="inputBox">
+        <audio id="backgroundAudio" src="/audio/fright.mp3" autoplay></audio>
+        <audio id="textSound" src="/arg/SND_TXT2.wav"></audio>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        uniform float iGlobalTime;
+        uniform vec2 iResolution;
+        uniform float ITERATIONS;
+        uniform float TIMEOFFSET;
+        uniform float SPIRAL;
+        uniform float STRUCTURE;
+        uniform float ZOOM;
+        uniform float TINT;
+        uniform float COLOUR;
+        uniform float ShiftX;
+        uniform float ShiftY;
+        uniform float DustDensity;
+        uniform float CentralCore;
+        uniform float CoreHaze;
+        uniform float CoreIntensity;
+        uniform float StarsGreen;
+        uniform float StarsBlue;
+        uniform float Brightness;
+        uniform float Contrast;
+
+        vec3 applyBrightnessContrast(vec3 color, float brightness, float contrast) {
+            color = color * brightness;
+            color = (color - 0.5) * contrast + 0.5;
+            return clamp(color, 0.0, 1.0);
+        }
+
+        void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
+            vec2 uv = (fragCoord.xy / iResolution.xy);
+            
+            uv.x -= ShiftX;
+            uv.y -= ShiftY / (iResolution.x / iResolution.y);
+            
+            float len = length(uv.xy) * (1.0 - ZOOM);
+            
+            float t = .1 * iGlobalTime + TIMEOFFSET;
+            float time = t + (5. + sin(t)) * .11 / (len + 1. - SPIRAL);
+            float si = sin(time), co = cos(time);
+            uv *= mat2(co, si, -si, co);
+
+            float c = 0., v1 = 0., v2 = 0., v3;
+            vec3 p;
+
+            for (int i = 0; i < 100; i++) {
+                if (i > int(ITERATIONS)) { break; }
+                p = .035 * float(i) * vec3(uv, 1.);
+                p += vec3(.622, .3, -1.5 - sin(t * 1.3) * .1);
+                for (int i = 0; i < 10; i++) {
+                    p = abs(p) / dot(p, p) - STRUCTURE;
+                }
+                float p2 = dot(p, p) * .0015;
+                v1 += p2 * (1.8 + sin(len * 13.0 + .5 - t * 2.));
+                v2 += p2 * (1.5 + sin(len * 13.5 + 2.2 - t * 3.));
+            }
+
+            c = length(p.xy) * DustDensity;
+            v1 *= smoothstep(StarsGreen * .7, .0, len);
+            v2 *= smoothstep(StarsBlue * .7, .0, len);
+            v3 = smoothstep(CoreHaze, .0, len / 2.);
+
+            float gray = c + (v2 + c) * .25 + v1;
+            gray = gray + v3 * (.7 + CentralCore * .3) * CoreIntensity;
+            gray = applyBrightnessContrast(vec3(gray), Brightness, Contrast).r;
+
+            fragColor = vec4(vec3(gray), 1.0);
+        }
+
+        void main(void) {
+            mainImage(gl_FragColor, gl_FragCoord.xy);
+        }
+    </script>
+
+<script src="/arg/FIRSTCLUE.js"></script>
+<script src="/arg/THEDIDLE.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shader with Brightness and Contrast (Grayscale)</title>
+    <style>
+        body, html {
+            margin: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        uniform float iGlobalTime;
+        uniform vec2 iResolution;
+        uniform float ITERATIONS;
+        uniform float TIMEOFFSET;
+        uniform float SPIRAL;
+        uniform float STRUCTURE;
+        uniform float ZOOM;
+        uniform float TINT;
+        uniform float COLOUR;
+        uniform float ShiftX;
+        uniform float ShiftY;
+        uniform float DustDensity;
+        uniform float CentralCore;
+        uniform float CoreHaze;
+        uniform float CoreIntensity;
+        uniform float StarsGreen;
+        uniform float StarsBlue;
+        uniform float Brightness;
+        uniform float Contrast;
+
+        vec3 applyBrightnessContrast(vec3 color, float brightness, float contrast) {
+            color = color * brightness;
+            color = (color - 0.9) * contrast + 0.000001; // Adjust contrast
+            return clamp(color, 0.0, 1.0); // Ensure values remain in valid range
+        }
+
+        void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
+            vec2 uv = (fragCoord.xy / iResolution.xy);
+            
+            uv.x -= ShiftX;
+            uv.y -= ShiftY / (iResolution.x / iResolution.y);
+            
+            float len = length(uv.xy) * (1.0 - ZOOM);
+            
+            float t = .1 * iGlobalTime + TIMEOFFSET;
+            float time = t + (5. + sin(t)) * .11 / (len + 1. - SPIRAL);
+            float si = sin(time), co = cos(time);
+            uv *= mat2(co, si, -si, co);
+
+            float c = 0., v1 = 0., v2 = 0., v3;
+            vec3 p;
+
+            for (int i = 0; i < 100; i++) {
+                if (i > int(ITERATIONS)) { break; }
+                p = .035 * float(i) * vec3(uv, 1.);
+                p += vec3(.622, .3, -1.5 - sin(t * 1.3) * .1);
+                for (int i = 0; i < 10; i++) {
+                    p = abs(p) / dot(p, p) - STRUCTURE;
+                }
+                float p2 = dot(p, p) * .0015;
+                v1 += p2 * (1.8 + sin(len * 13.0 + .5 - t * 2.));
+                v2 += p2 * (1.5 + sin(len * 13.5 + 2.2 - t * 3.));
+            }
+
+            c = length(p.xy) * DustDensity;
+            v1 *= smoothstep(StarsGreen * .7, .0, len);
+            v2 *= smoothstep(StarsBlue * .7, .0, len);
+            v3 = smoothstep(CoreHaze, .0, len / 2.);
+
+            float gray = c + (v2 + c) * .25 + v1; // Combine components into a grayscale value
+            gray = gray + v3 * (.7 + CentralCore * .3) * CoreIntensity;
+            gray = applyBrightnessContrast(vec3(gray), Brightness, Contrast).r; // Apply brightness and contrast
+
+            fragColor = vec4(vec3(gray), 1.0); // Output grayscale color
+        }
+
+        void main(void) {
+            mainImage(gl_FragColor, gl_FragCoord.xy);
+        }
+    </script>
+
+    <script>
+        let scene, camera, renderer, uniforms;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.Camera();
+            camera.position.z = 1;
+
+            let geometry = new THREE.PlaneBufferGeometry(2, 2);
+
+            uniforms = {
+                iGlobalTime: { value: 0.0 },
+                iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+                ITERATIONS: { value: 80.0 },
+                TIMEOFFSET: { value: 0.0 },
+                SPIRAL: { value: 0.87 },
+                STRUCTURE: { value: 0.65 },
+                ZOOM: { value: 0.1 },
+                TINT: { value: 1.0 },
+                COLOUR: { value: 1.0 },
+                ShiftX: { value: 0.5 },
+                ShiftY: { value: 0.5 },
+                DustDensity: { value: 0.02 },
+                CentralCore: { value: 0.9 },
+                CoreHaze: { value: 0.066 },
+                CoreIntensity: { value: 0.9 },
+                StarsGreen: { value: 0.56 },
+                StarsBlue: { value: 0.51 },
+                Brightness: { value: 1.2 },  // Modify this value for brightness
+                Contrast: { value: 1.5 }    // Modify this value for contrast
+            };
+
+            let material = new THREE.ShaderMaterial({
+                uniforms: uniforms,
+                fragmentShader: document.getElementById('fragmentShader').textContent
+            });
+
+            let mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            uniforms.iGlobalTime.value += 0.05;
+            renderer.render(scene, camera);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', function () {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

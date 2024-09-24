@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEXIPISO - GALLERY</title>
+    
+    <!-- Pre-cargar la imagen de fondo -->
+    <link rel="preload" href="/images/FondoDescarga.png" as="image">
+
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+            margin: 0;
+            background: url('/images/FondoDescarga.png') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(30px); /* Efecto de desenfoque gaussiano */
+            zoom: 0.7; /* Zoom out del 70% */
+        }
+
+        .gallery-container {
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .header-image-container {
+            text-align: center; /* Centrar el contenido dentro del contenedor */
+            margin-bottom: 30px; /* Espacio debajo de la imagen */
+        }
+
+        .header-image-container img {
+            max-width: 100%;
+            height: auto; /* Mantener la proporción de la imagen */
+        }
+
+        .gallery-section {
+            margin-bottom: 30px; /* Espacio entre secciones */
+        }
+
+        .gallery-section-title {
+            font-family: 'Helvetica', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center; /* Centrar el texto del encabezado */
+        }
+
+        .gallery-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+            padding: 5px;
+            background: linear-gradient(90deg, #1EE9C2, #FF5077); /* Degradado horizontal */
+            aspect-ratio: 1; /* Mantener un aspecto cuadrado */
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white; /* Fondo blanco dentro del borde */
+            z-index: -1;
+            border-radius: 6px; /* Ajuste para que el fondo blanco sea un poco más pequeño que el borde */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+            border-radius: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .expanded-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+            animation: expandView 0.5s forwards; /* Animación de expansión */
+        }
+
+        .expanded-view img {
+            max-width: 90%;
+            max-height: 80%;
+            animation: expandImage 0.5s forwards; /* Animación de expansión de la imagen */
+        }
+
+        .description {
+            margin-top: 15px;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards 0.5s;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Keyframes para la animación de expansión de la vista */
+        @keyframes expandView {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Keyframes para la animación de expansión de la imagen */
+        @keyframes expandImage {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Keyframes para el efecto de desvanecido del texto */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos para el regulador de volumen */
+        .volume-control {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg); /* Centrar verticalmente y rotar para que sea vertical */
+            transform-origin: left center;
+            width: 150px;
+            z-index: 1000; /* Asegura que el control esté por encima de otros elementos */
+        }
+    </style>
+</head>
+<body>
+
+<audio id="background-audio" autoplay loop>
+    <source src="/audio/monobissa.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
+<!-- Control de volumen -->
+<input type="range" id="volume-control" class="volume-control" min="0" max="1" step="0.01" value="0.5">
+
+<div class="gallery-container">
+    <!-- Imagen en el espacio vacío encima de la sección A -->
+    <div class="header-image-container">
+        <img src="/gallery/ARMAGEDON%20DEFIENDE%20A%20AZ%20CORTINITAS%20DICIENDO%20LA%20N%20WORD.png" alt="Imagen de encabezado">
+    </div>
+
+    <!-- Secciones de la galería -->
+<div class="gallery-container">
+    <!-- Imagen en el espacio vacío encima de la sección A -->
+    <div class="header-image-container">
+        <img src="/gallery/ARMAGEDON%20DEFIENDE%20A%20AZ%20CORTINITAS%20DICIENDO%20LA%20N%20WORD.png" alt="Imagen de encabezado">
+    </div>
+
+    <!-- Sección A -->
+    <div class="gallery-section">
+        <h2 class="gallery-section-title">Backgrounds & Concept Art!</h2>
+        <div class="gallery-items">
+            <div class="gallery-item">
+                <img src="/gallery/image%20-%202024-08-14T004628.614.png" alt="Imagen 1" data-description="First Concept of Typicali (California at the moment).">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/cono1.png" alt="Imagen 2" data-description="Background for Natu's song (Scrapped due to Lack of Time)">
+            </div>
+            <div class="gallery-item">
+                <img src="/images/FondoRegular.png" alt="Imagen 2" data-description="Background for KK AERO (Scrapped due to Lack of Time).">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/fof.png" alt="Imagen 3" data-description="Scrapped Background for Typicali.">
+            </div>
+             <div class="gallery-item">
+                <img src="/gallery/ANGEL%20NO%20DEJA%20DE%20GEMIR.png" alt="Imagen 4" data-description="Early Ringtone Concept Art.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/COITO.png" alt="Imagen 5" data-description="Concept Art of Skid for Frank's song.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/RREANDO.png" alt="Imagen 7" data-description="Concept Art of Pump (Pedro) & Alt Frank for Frank's song.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/SUNSET1.png" alt="Imagen 6" data-description="Sunset Full Concept Art.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/DILDOS.png" alt="Imagen 8" data-description="SoyBoy Full Concept Art">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/K4-17buk.gif" alt="Imagen 9" data-description="Earliest Ringtone Full Concept Art">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/SOMBUCK.png" alt="Imagen 10" data-description="Zombucks Full Concept Art">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección B -->
+    <div class="gallery-section">
+        <h2 class="gallery-section-title">Sprites!</h2>
+        <div class="gallery-items">
+            <div class="gallery-item">
+                <img src="/gallery/cosm1.png" alt="Imagen 4" data-description="First Rendition of Cosmos' Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/idle-gurp.png" alt="Imagen 8" data-description="Second Rendition of Cosmos' Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/cosm2.png" alt="Imagen 5" data-description="Third Rendition of Cosmos' Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/cosm3.png" alt="Imagen 6" data-description="Fourth Rendition of Cosmos' Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/cosm4.png" alt="Imagen 7" data-description="Fifth and Final Rendition of Cosmos' Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/ANGEL%20SE%20METIO%20LAS%20PATAS%20DE%20SU%20GATO%20EN%20EL%20CULO.png" alt="Imagen 7" data-description="First DrawPant Sprite">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/CEPILLOSENELCULO.png" alt="Imagen 7" data-description="Second DrawPant Sprite">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/PRIMER%20ALFOX.png" alt="Imagen 7" data-description="First Rendition of Aldox's Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/que%20paso%20wey.png" alt="Imagen 7" data-description="Second Rendition of Aldox's Sprite.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/UUU.png" alt="Imagen 7" data-description="Third and Final Rendition of Aldox's Sprite + Other OCs of his own.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/negru1.png" alt="Imagen 7" data-description="BDarkar206 Early Sprites.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/fogg.gif" alt="Imagen 7" data-description="BDarkar206 Modelling for his ingame poses.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/MEQUING.png" alt="Imagen 10" data-description="ArugXD scrapped miniarug.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/CAGAR%20EN%20UNA%20BOTELLA.png" alt="Imagen 10" data-description="Smily, IRL, Acting as if he were miniarug in the previous drawing, unaware of the impending consequences.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/Mmmm%20tetas.png" alt="Imagen 10" data-description="Danae scrapped sprite, compared to Mathy.">
+            </div>
+        </div>
+    </div>
+    <!-- Sección C -->
+    <div class="gallery-section">
+        <h3 class="gallery-section-title">Fanart!</h3>
+        <div class="gallery-items">
+            <div class="gallery-item">
+                <img src="/gallery/mentita1.png" alt="Imagen 8" data-description="By @MinM1nP4wz on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/mentita2.png" alt="Imagen 8" data-description="By @MinM1nP4wz on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/mentita3.png" alt="Imagen 8" data-description="By @MinM1nP4wz on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/cigs1.png" alt="Imagen 8" data-description="By @ToastedMell0w_ on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/peuartz1.png" alt="Imagen 8" data-description="By @Peu_Arts on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/bronto1.png" alt="Imagen 8" data-description="By @bronto_bitch on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/natu1.png" alt="Imagen 8" data-description="By @nataliofag on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/natu2.png" alt="Imagen 8" data-description="By @nataliofag on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/zohcul1.png" alt="Imagen 8" data-description="By @zohcul on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/lux1.png" alt="Imagen 8" data-description="By @Lux_120 on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/doblele1.png" alt="Imagen 8" data-description="By @DobleleFr on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/doblele2.png" alt="Imagen 8" data-description="By @DobleleFr on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/doblele3.png" alt="Imagen 8" data-description="By @DobleleFr on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/doblele4.png" alt="Imagen 8" data-description="By @DobleleFr on Twitter.">
+            </div>
+            <div class="gallery-item">
+                <img src="/gallery/dereckplayz1.png" alt="Imagen 8" data-description="By @DereckPlayz on Twitter.">
+            </div>
+</div>
+
+    <!-- Expansión de la vista -->
+    <div class="expanded-view" id="expanded-view">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <img id="expanded-image" src="" alt="Imagen expandida">
+        <div class="description" id="description"></div>
+    </div>
+</div>
+
+<script>
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const expandedView = document.getElementById('expanded-view');
+    const expandedImage = document.getElementById('expanded-image');
+    const description = document.getElementById('description');
+    const closeBtn = document.getElementById('close-btn');
+
+    const audio = document.getElementById('background-audio');
+    const volumeControl = document.getElementById('volume-control');
+
+    // Variables para controlar la imagen actual
+    let currentIndex = 0;
+    const images = Array.from(document.querySelectorAll('.gallery-item img'));
+
+    // Función para actualizar la imagen expandida y su descripción
+    function updateExpandedView(index) {
+        const img = images[index];
+        expandedImage.src = img.src;
+        description.textContent = img.getAttribute('data-description');
+    }
+
+    // Pre-cargar todas las imágenes
+    images.forEach(img => {
+        const preloadedImg = new Image();
+        preloadedImg.src = img.src;
+    });
+
+    // Maneja el clic en la galería
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            currentIndex = index;
+            updateExpandedView(currentIndex);
+            expandedView.style.display = 'flex';
+        });
+    });
+
+    // Maneja el clic en el botón de cerrar
+    closeBtn.addEventListener('click', () => {
+        expandedView.style.display = 'none';
+    });
+
+    // Cierra la vista expandida al hacer clic fuera de la imagen o en el botón de cerrar
+    expandedView.addEventListener('click', (e) => {
+        if (e.target === expandedView || e.target === closeBtn) {
+            expandedView.style.display = 'none';
+        }
+    });
+
+    // Maneja el cambio de imagen con las flechas del teclado
+    document.addEventListener('keydown', (e) => {
+        if (expandedView.style.display === 'flex') {
+            if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateExpandedView(currentIndex);
+            } else if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateExpandedView(currentIndex);
+            }
+        }
+    });
+
+    // Maneja el cambio de volumen
+    volumeControl.addEventListener('input', (e) => {
+        audio.volume = e.target.value;
+    });
+</script>
+
+</body>
+</html>
