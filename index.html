@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEXIPISO</title>
+  <title>MEXIFLOOR</title>
+
+  <meta name="title" content="MEXIFLOOR" />
+  <meta name="description" content="desteñi el piso." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mexipiso.com" />
+  <meta property="og:title" content="MEXIFLOOR" />
+  <meta property="og:description" content="desteñi el piso." />
+  <meta property="og:image" content="/img/front.png">
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://mexipiso.com" />
+  <meta property="twitter:title" content="MEXIFLOOR" />
+  <meta property="twitter:description" content="desteñi el piso." />
+  <meta property="twitter:image" content="/img/front.png" />" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="icon" type="image/x-icon" href="/img/MexiWebsiteLogo.ico">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,17 +201,16 @@ body, .button:after {
   <div class="image-container"> <img src="img/mexisolo blanco.png" alt="Imagen" style="width: 100%; height: auto;"> </div>
   <div class="ctn"> <div href="" class="button2" style="position: absolute; top: 270px; left: 165px;" >official website</div> </div> <br>
   <div class="line"></div>
-    <div class="ctn"> <a href="" class="button b-blue">./ABOUT</a> </div> <br>
+    <div class="ctn"> <a href="about.html" class="button b-blue">./ABOUT</a> </div> <br>
     <div class="ctn"> <a href="" class="button b-blue">./DOWNLOAD</a> </div> <br>
     <div class="ctn"> <a href="" class="button b-blue">./GALLERY</a> </div> <br>
     <div class="ctn"> <a href="" class="button b-blue">./GUESTBOOK</a> </div> <br>
     <div class="ctn"> <a href="" class="button b-blue">./CREDITS</a> </div> <br>
+
+    <canvas id="lantas" style="position: fixed;"></canvas>
   </div>
 
   <button class="boton" onclick="clearLocalStorage()">borrar cuenta de free fire (localstorage)</button>
-
-
-    <canvas id="lantas" style="position: fixed;"></canvas>
 
     <audio id="oudio" muted="true" autoplay="true">
       <source src="audio/WEBMIX2.wav" type="audio/wav" />
@@ -224,7 +237,7 @@ body, .button:after {
       ctx.rect(0, 0, window.innerWidth, window.innerHeight);
       ctx.fill();
 
-      let group = new TWEEN.Group();
+      let group = new TWEEN.Group(); // ternan el crack carajo
 
       const twelen = new TWEEN.Tween(audio);
       twelen.to({volume: 1}, 2000);

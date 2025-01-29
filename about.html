@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABOUT US!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="/img/MexiWebsiteLogo.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+@font-face {
+ font-family: 'monogram';
+ src: url("https://menez.io/css/font/monogram-extended.ttf") format('truetype');
+ font-weight: bold;
+ font-style: normal;
+}
+    body{
+        background: #ffffff;
+    }
+    .ctn {
+  display: flex;
+  position: relative;
+  right: 960px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+  .b-blue, .b-blue:before {
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+  }
+.button {
+  display: inline-block;
+  position: relative;
+  border-radius: 0px;
+  text-decoration: none;
+  padding: 2px;  
+  margin: 1px;
+  font-size: 32px; 
+  font-weight: 1;
+  font-family: 'Lekton', monospace;
+  transition: all .5s;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: rainbow 18s ease infinite;
+  width: 1000px;
+  text-align: right;
+}
+.button:hover {
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, 1);
+}
+.button:hover:after {
+  right: 100%;
+}
+.button:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 0px;
+  transition: all .5s;
+}
+.button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  z-index: -1;
+  border-radius: 0px;
+  transition: all .5s;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    width: 25%;
+    margin: auto;
+    top: 50px;
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+    justify-content: center;
+  }
+
+  @-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+  }
+
+  .line {
+  display: flex;
+  width: 1000px;
+  height: 2px;
+  position: relative;
+
+  top: 20px;
+  background: #cfcfcf;
+  justify-content: center;
+  margin: auto; /*esta es la solucion a todo*/
+}
+
+.txt-ctn{
+    font-family: 'monogram', monospace;
+    font-size: 32px;
+    max-width: 1200px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    top: 50px;
+    text-wrap: balance;
+    margin: auto;
+}
+
+</style>
+</head>
+  <body>
+    <div class="image-container"> <img src="img/mexisolo blanco.png" alt="Imagen" style="width: 100%; height: auto;"> </div>
+    <div class="line"></div>
+    <div class="txt-ctn">Mexifloor is a 17bucks fanmod started by Angel on 9/11/2023, perfecto...
+    </div>
+
+
+
+  </body>
+</html>
