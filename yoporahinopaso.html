@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEXIPISO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="/img/MexiWebsiteLogo.ico">
+
+  <meta content="Embed Title" property="og:title" />
+  <meta content="Site Description" property="og:description" />
+  <meta content="https://embed.com/this-is-the-site-url" property="og:url" />
+  <meta content="https://embed.com/embedimage.png" property="og:image" />
+  <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+
+  <style>
+
+  </style>
+  
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/25.0.0/tween.umd.js"></script>
+
+    <script>
+      var canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.left = "0px";
+      canvas.style.top = "0px";
+      document.body.appendChild(canvas);
+
+      var ctx = canvas.getContext('2d');
+      ctx.rect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.font = "40px Georgia";
+
+      var postMousePos = {x: 0, y: 0};
+
+      var mouseHolding = false;
+
+      var curCtx = 0;
+      var ctxhistorial = [];
+
+      window.onmousedown = () => {
+        mouseHolding = true;
+      }
+      window.onmouseup = () => {
+        mouseHolding = false;
+
+        curCtx++;
+        ctxhistorial.push(ctx.getImageData(0, 0, 0, ));
+      }
+
+      document.onmousemove = function(ev) {
+        //ctx.fillText('hola', ev.clientX, ev.clientY);
+
+        if (mouseHolding) {
+          ctx.fillText('hola', ev.clientX, ev.clientY);
+
+          let delta = {x: ev.clientX - postMousePos.x, y: ev.clientY - postMousePos.y};
+  
+          let pixelesMove = Math.floor(Math.max(Math.abs(delta.x), Math.abs(delta.y)));
+  
+          pixelesMove /= 1;
+  
+          for(let i = 0; i<pixelesMove; i++) {
+            ctx.fillText('hola', ev.clientX - (delta.x * i/pixelesMove), ev.clientY - (delta.y * i/pixelesMove));
+          }
+        }
+
+        postMousePos = {x: ev.clientX, y: ev.clientY};
+      }
+
+      document.onkeypress = function(ev) {
+        if (ev.key == "\x1A") {
+          console.log("\x1A");
+          //curCtx--;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      };
+
+      addEventListener("resize", function(ev) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      function update() {
+       // ctx.fillText('hola', window.event.clientX, window.event.clientY);
+        //ctx.update();
+        window.requestAnimationFrame(update)
+      }
+      
+      window.requestAnimationFrame(update)
+    </script>
+
+</body>
+</html>
