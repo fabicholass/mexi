@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shader Test</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/25.0.0/tween.umd.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({antialias: false});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const textureLoader = new THREE.TextureLoader();
+        const texture1 = textureLoader.load('/img/logo.png');
+        const texture2 = textureLoader.load('/img/logotext.png');
+
+        texture1.generateMipmaps = false;
+        texture1.minFilter = THREE.LinearFilter;
+        texture2.generateMipmaps = false;
+        texture2.minFilter = THREE.LinearFilter;
+
+        const shaderMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                iResolution: { value: new THREE.Vector3(window.innerWidth, window.innerHeight, 1) },
+                iTime: { value: 0.0 },
+                iMouse: { value: new THREE.Vector2(0, 0) },
+                iChannel0: { type: 't', value: texture1 },
+                iChannel1: { type: 't', value: texture2 },
+                cierre: { value: 1.04 },
+                alpha: { value: 0.0 }
+            },
+            vertexShader: `
+                void main() {
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 iResolution;
+                uniform float iTime;
+                uniform vec2 iMouse;
+                uniform sampler2D iChannel0;
+                uniform sampler2D iChannel1;
+                uniform float cierre;
+                uniform float alpha;
+
+                vec2 getUV(vec2 fragCoord, vec2 res) {
+                    return vec2(fragCoord.xy / res.xy);
+                }
+
+                vec4 dissolve(vec4 thisPix, vec4 source, float light) {
+                    float thisAlpha = 0.15;
+                    float opAlpha = 1.0 - thisAlpha;
+                    vec4 temp = vec4(0.);
+                    temp.r = clamp((thisPix.r * opAlpha) + (source.r * thisAlpha + light), 0.0, 1.0);
+                    temp.g = clamp((thisPix.g * opAlpha) + (source.g * thisAlpha + light), 0.0, 1.0);
+                    temp.b = clamp((thisPix.b * opAlpha) + (source.b * thisAlpha + light), 0.0, 1.0);
+                    temp.a = thisPix.a;
+                    return temp;
+                }
+
+                void main() {
+                    float val = cierre - 0.5;
+                    vec2 uv = gl_FragCoord.xy / iResolution.xy;
+                    vec2 uvLogos = uv;
+
+                    float rel = iResolution.y / iResolution.x;
+
+                    /*uvLogos = gl_FragCoord.xy / vec2(iResolution.x * rel, iResolution.x * rel);
+
+                    uvLogos.x *=*/
+
+                    vec2 scale = vec2(0.35, 0.28);
+
+                    vec2 realScale = vec2(1. / scale.x, 1. / scale.y);
+                    uvLogos /= scale;
+                    uvLogos -= vec2((realScale.x * 0.5) - 0.5, (realScale.y * 0.5) - 0.5);
+
+                    float angle = -62.0;
+
+                    vec3 col = 0.5 + 0.5 * cos(iTime * 2.0 + uv.xyx + vec3(0.0, 2.0, 4.0));
+
+                    vec4 WOWesto = vec4(1.0);
+                    vec4 okay = texture(iChannel0, uvLogos);
+
+                    vec4 okayvhs = vec4(0.0);
+                    vec4 vhs = texture(iChannel1, uvLogos);
+
+                    if (uvLogos.x < 0. || uvLogos.x > 1. || uvLogos.y < 0. || uvLogos.y > 1.) {
+                        vhs = vec4(0.);
+                        okay = vec4(0.);
+                    }
+                    // <>
+
+                    WOWesto = mix(WOWesto, dissolve(okay, vec4(col, 1.0), alpha), okay.a);
+                    okayvhs = mix(okayvhs, vhs, vhs.a);
+
+                    float rad = radians(angle + 45.0);
+                    uv -= 0.5;
+                    uv *= mat2(cos(rad), -sin(rad), sin(rad), cos(rad));
+                    uv += 0.5;
+
+                    gl_FragColor = mix(WOWesto, okayvhs, max(min(
+                        max(round(uv.x - uv.y + val), round(uv.y - uv.x + val)), 1.0), 0.0));
+                }
+            `
+        });
+        
+        shaderMaterial.precision = "highp";
+
+        const planeGeometry = new THREE.PlaneGeometry(3.1, 1.6, 2, 2);
+        const plane = new THREE.Mesh(planeGeometry, shaderMaterial);
+        scene.add(plane);
+
+        camera.position.z = 1;
+
+        window.addEventListener('mousemove', (event) => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            //shaderMaterial.uniforms.iMouse.value.x = ariables.shit;
+            //shaderMaterial.uniforms.iMouse.value.y = 1;
+        });
+
+        const twen = new TWEEN.Tween(shaderMaterial.uniforms.cierre);
+
+        twen.to({value:0}, 1000);
+        twen.easing(TWEEN.Easing.Quadratic.Out);
+        twen.delay(2000);
+        twen.start();
+
+        function animate() {
+            twen.update();
+
+            requestAnimationFrame(animate);
+            shaderMaterial.uniforms.iTime.value += 0.05;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            shaderMaterial.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight, 1);
+        });
+    </script>
+</body>
+</html>

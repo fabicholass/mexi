@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEXIPISO - CREDITS</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/MexiWebsiteLogo.ico">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Helvetica Bold', Arial, sans-serif;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background: #000;
+            box-sizing: border-box;
+            color: #fff;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            flex-basis: calc(33.33% - 20px); 
+            box-sizing: border-box;
+        }
+
+        .image-text-container img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+
+        .image-text-container h2 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .image-text-container h3 {
+            font-size: 14px;
+            color: #cccccc;
+            margin: 3px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .image-text-container {
+                flex-basis: calc(50% - 20px);
+            }
+
+            .image-text-container img {
+                width: 80px;
+            }
+
+            .image-text-container h2 {
+                font-size: 14px;
+            }
+
+            .image-text-container h3 {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-text-container {
+                flex-basis: calc(100% - 20px);
+            }
+        }
+
+        #shaderCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+        }
+    </style>
+</head>
+<body>
+    <canvas id="shaderCanvas"></canvas>
+    <div class="container">
+    <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Peacock6k</h2>
+            <h3>Creating 17bucks!.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Otro">
+            <h2>4cent</h2>
+            <h3>Mod Owner, Artist.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Fabicholas">
+            <h2>Fabicholas</h2>
+            <h3>Main Site Coder & Owner, Mod Co-director, Composer (Hyperphonix, Typicali, Orbeatz V2).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Cosmos">
+            <h2>Cosmos</h2>
+            <h3>Video Editor, Artist (Cartug, Concept Art & Storyboarding), Co-director.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Misael (6blindy)">
+            <h2>Misael (6blindy)</h2>
+            <h3>Main Mod Coder, Co-director, Site Coder.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="BDarkar206">
+            <h2>BDarkar206</h2>
+            <h3>Site Coder (Main Menu), Composer (Negruras, Plugger, Knockback, Huevo).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Valend">
+            <h2>Valend</h2>
+            <h3>Mod Coder. (Freeplay Menu)</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="elfb34">
+            <h2>elfb34</h2>
+            <h3>Mod Coder (Buenas Tardes Events).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Nextalicious">
+            <h2>Nextalicious</h2>
+            <h3>Mod Coder (Ringtone Events).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Smily">
+            <h2>Smily</h2>
+            <h3>Composer (Ringtone, Arrebatao, Monobissa, Orbeatz, Sunset, Kick The Bucket, On TV, Typicali (Chill Mix)).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Frank000XD">
+            <h2>Frank000XD</h2>
+            <h3>Composer (Cojoneh, Autopsia, Hyperphonix).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Karma">
+            <h2>Karma</h2>
+            <h3>Composer (Rugst, Autopsia, KK AERO, Drifted Cycles).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="ooum">
+            <h2>ooum</h2>
+            <h3>Composer (KK AERO, Fantasize (Normal & Homer mix)).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Kalpy">
+            <h2>Kalpy</h2>
+            <h3>Composer (Main Menu).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="ArugXD">
+            <h2>ArugXD</h2>
+            <h3>Composer (Samn, Cojoneh (BF Mix)).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Rxdial">
+            <h2>Rxdial</h2>
+            <h3>Composer (New Folder).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="Camzta">
+            <h2>Camzta</h2>
+            <h3>Composer (Orbeatz (Llamert Mix)).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="nahum">
+            <h2>nahum</h2>
+            <h3>Animator (Song Cutscenes).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>littlekenuxx</h2>
+            <h3>Animator (Song Cutscenes).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>DrawPant</h2>
+            <h3>Animator (MEXICORTO (Part 1)).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Monki Alias</h2>
+            <h3>Animator (MEXICORTO (Part 2)).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>offi</h2>
+            <h3>Artist (Mexicasa Menu, Autopsia Cutscene).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>DonAlgo</h2>
+            <h3>Artist (Manzanin, DonAlgo, Snas, Fabicholas), Composer (Buenas Tardes, Huevo).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Lux12</h2>
+            <h3>Artist (Lux12, Background Boppers in Huevo, Fabicholas).</h3>
+        </div>
+        <div class="image-text-container">
+             <img src="/images/viernesBtn.png" alt="SNAS" onclick="window.location.href='https://mexipiso.com/snas';">
+            <h2>TheSnas</h2>
+            <h3>Artist (Car from Buenas Tardes, Manzanin Creator, KK Aero Sprites).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Plage</h2>
+            <h3>Artist (Typicali Combi Boppers).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Danae</h2>
+            <h3>Artist (Mathy, Cosmos).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Bronto</h2>
+            <h3>Artist (Bronto).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>SinisterBart</h2>
+            <h3>Artist (Cosmos).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Ben Llamert</h2>
+            <h3>Artist (Llamert, Cosmos).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Samn</h2>
+            <h3>Artist.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Mathy</h2>
+            <h3>Animator (Auto:Mathy).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Deltaxarts</h2>
+            <h3>Artist.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Mill3r</h2>
+            <h3>Artist (Miller).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Kalx</h2>
+            <h3>Artist (Shaly).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Gabriel</h2>
+            <h3>Artist (Skid & Pump).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>AmeliaBreak</h2>
+            <h3>Artist (Arug).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Farsy</h2>
+            <h3>Charter (Typicali (Chill Mix), Hyperphonix, Samn, Sunset).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Raspyfv</h2>
+            <h3>Charter (Autopsia, Buenas Tardes, KK AERO, Monobissa, On TV, Cojoneh (BF Mix), Drifting Orbit (BF Mix), Kick the Bucket, Rugst, Ringtone).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>VR</h2>
+            <h3>Charter (Huevo, Plugger).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>jacoblmao</h2>
+            <h3>Charter (Drifting Cycles (BF Mix), Sunset).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>JustRosy</h2>
+            <h3>Charter (Arrebatao).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Lonely Kris</h2>
+            <h3>Charter (New Folder).</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>RixFX</h2>
+            <h3>Pico Chromatic used in Typicali.</h3>
+        </div>
+        <div class="image-text-container">
+            <img src="/images/viernesBtn.png" alt="littlekenuxx">
+            <h2>Maurii</h2>
+            <h3>Gracias.</h3>
+        </div>
+    </div>
+
+     <script id="fragmentShader" type="x-shader/x-fragment">
+    precision highp float;
+
+ // shader by by zebox02 (https://editor.isf.video/shaders/5e7a803e7c113618206deda7)
+ 
+    uniform float TIME;
+    uniform float scale;
+    uniform float amp;
+    uniform float r1, r2, r3, r4;
+    uniform float g1, g2, g3, g4;
+    uniform float b1, b2, b3, b4;
+    uniform float c_5, c_6;
+    uniform float contrast;
+    uniform float brightness;
+
+    float rand(vec2 n) { 
+        return fract(cos(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+    }
+
+    float noise(vec2 n) {
+        const vec2 d = vec2(0.0, 1.0);
+        vec2 b = floor(n), f = smoothstep(vec2(0.0), vec2(1.0), fract(n));
+        return mix(mix(rand(b), rand(b + d.yx), f.x), mix(rand(b + d.xy), rand(b + d.yy), f.x), f.y);
+    }
+
+    float fbm(vec2 n) {
+        float total = 0.0, amplitude = amp;
+        for (int i = 0; i < 7; i++) {
+            total += sin(noise(n) * amplitude);
+            n += n;
+            amplitude *= .9;
+        }
+        return total;
+    }
+
+    vec3 applyContrast(vec3 color, float contrast) {
+        return ((color - 0.9) * contrast + 0.1);
+    }
+
+    vec3 applyBrightness(vec3 color, float brightness) {
+        return color + brightness;
+    }
+
+    void main() {
+        vec3 c1 = vec3(r1, g1, b1);
+        vec3 c2 = vec3(r2, g2, b2);
+        vec3 c3 = vec3(r3, g3, b3);
+        vec3 c4 = vec3(r4, g4, b4);
+        vec3 c5 = vec3(c_5);
+        vec3 c6 = vec3(c_6);
+        vec2 p = gl_FragCoord.xy / scale;
+        float q = fbm(p - TIME * 0.1);
+        vec2 r = vec2(fbm(p + q + TIME - p.x - p.y), fbm(p + q - TIME * .9));
+        vec3 c = mix(c1, c2, fbm(p + r * TIME)) + mix(c3, c4, r.x) - mix(c5, c6, r.y);
+        c = applyContrast(c, contrast);
+        c = applyBrightness(c, brightness);
+        gl_FragColor = vec4(c, 1.0);
+    }
+</script>
+    <script>
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                console.error(gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+            return shader;
+        }
+
+        function createProgram(gl, vertexShaderSource, fragmentShaderSource) {
+            const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+            const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+            const program = gl.createProgram();
+            gl.attachShader(program, vertexShader);
+            gl.attachShader(program, fragmentShader);
+            gl.linkProgram(program);
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                console.error(gl.getProgramInfoLog(program));
+                return null;
+            }
+            return program;
+        }
+
+        function resizeCanvas(canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.onload = () => {
+            const canvas = document.getElementById('shaderCanvas');
+            const gl = canvas.getContext('webgl');
+            if (!gl) {
+                console.error('WebGL not supported');
+                return;
+            }
+
+            resizeCanvas(canvas);
+
+            window.addEventListener('resize', () => {
+                resizeCanvas(canvas);
+                gl.viewport(0, 0, canvas.width, canvas.height); 
+            });
+
+            gl.viewport(0, 0, canvas.width, canvas.height); 
+
+            const vertexShaderSource = `
+                attribute vec4 a_position;
+                void main() {
+                    gl_Position = a_position;
+                }
+            `;
+
+            const fragmentShaderSource = document.getElementById('fragmentShader').textContent;
+
+            const program = createProgram(gl, vertexShaderSource, fragmentShaderSource);
+            gl.useProgram(program);
+
+            const positionLocation = gl.getAttribLocation(program, 'a_position');
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            const positions = new Float32Array([
+                -1, -1,
+                1, -1,
+                -1,  1,
+                -1,  1,
+                1, -1,
+                1,  1,
+            ]);
+            gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+            const timeLocation = gl.getUniformLocation(program, 'TIME');
+            const scaleLocation = gl.getUniformLocation(program, 'scale');
+            const ampLocation = gl.getUniformLocation(program, 'amp');
+            const r1Location = gl.getUniformLocation(program, 'r1');
+            const g1Location = gl.getUniformLocation(program, 'g1');
+            const b1Location = gl.getUniformLocation(program, 'b1');
+            const r2Location = gl.getUniformLocation(program, 'r2');
+            const g2Location = gl.getUniformLocation(program, 'g2');
+            const b2Location = gl.getUniformLocation(program, 'b2');
+            const r3Location = gl.getUniformLocation(program, 'r3');
+            const g3Location = gl.getUniformLocation(program, 'g3');
+            const b3Location = gl.getUniformLocation(program, 'b3');
+            const r4Location = gl.getUniformLocation(program, 'r4');
+            const g4Location = gl.getUniformLocation(program, 'g4');
+            const b4Location = gl.getUniformLocation(program, 'b4');
+            const c5Location = gl.getUniformLocation(program, 'c_5');
+            const c6Location = gl.getUniformLocation(program, 'c_6');
+            const contrastLocation = gl.getUniformLocation(program, 'contrast');
+            const brightnessLocation = gl.getUniformLocation(program, 'brightness');
+
+            gl.uniform1f(timeLocation, 0.0);
+            gl.uniform1f(scaleLocation, 100.0);
+            gl.uniform1f(ampLocation, 0.4);
+            gl.uniform1f(r1Location, 1.0);
+            gl.uniform1f(g1Location, 0.91);
+            gl.uniform1f(b1Location, 0.98);
+            gl.uniform1f(r2Location, 0.8);
+            gl.uniform1f(g2Location, 0.88);
+            gl.uniform1f(b2Location, 0.7);
+            gl.uniform1f(r3Location, 0.6);
+            gl.uniform1f(g3Location, 0.35);
+            gl.uniform1f(b3Location, 0.4);
+            gl.uniform1f(r4Location, 0.7);
+            gl.uniform1f(g4Location, 0.6);
+            gl.uniform1f(b4Location, 0.85);
+            gl.uniform1f(c5Location, 0.2);
+            gl.uniform1f(c6Location, 0.9);
+            gl.uniform1f(contrastLocation, 1.0);
+            gl.uniform1f(brightnessLocation, 0.0);
+
+            function render(time) {
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.uniform1f(timeLocation, time * 0.001);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
+        };
+    </script>
+</body>
+</html>

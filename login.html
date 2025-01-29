@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="/fonts/fixedsys-excelsior/fsex300.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="/img/MexiWebsiteLogo.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCESS</title>
+    <style>
+        body { margin: 0; background: #000000; overflow: hidden; }
+        #overlay {
+            font-family: 'Courier New', Courier, monospace;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 1);
+            color: #00FF00;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .testo {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00FF00;
+            font-size: 14px;
+            margin-top: 10px;
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            top: 460px;
+            opacity: 0.5;
+        }
+
+
+        .text {
+            font-family: "Fixedsys Excelsior";
+            color: #00ff00;
+            opacity: 0;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column-reverse;
+            font-family: "Fixedsys Excelsior";
+            color: #00ff00;
+            opacity: 0;
+            position: relative;
+            top: 770px;
+        }
+        </style>
+</head>
+<body>
+
+    <div id="overlay">password  <br>
+        <input type="text" id="contrasena" name="name" required minlength="4" maxlength="8" size="10" />
+        <div class="testo">this page is optimized for 1920x1080 screens, make sure you have 100% zoom.</div>
+    </div>
+    <div class="text" name="hola">DiosWey BIOS V3.01</div>
+    <div class="text" name="hola">Copyright (C) 1987-95, an elfb34 partner<br> <br></div>
+    <div class="text" name="hola">TX9XD-98N7V-6WMQ6-BX7FG-H8Q99</div>
+    <div class="text" name="hola" id="subid">Checked: 600KB -> 37888KB OK</div>
+    <div class="text" name="init">Checking Files...</div>
+    <div class="text" name="init">Starting MexiOS...</div>
+    <div class="footer" name="hola">Press F2, ESC or DELETE to stop memory check</div>
+    <div class="footer" name="hola">7QNT4-HJDDR-T672J-00</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/25.0.0/tween.umd.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/init.js"></script> 
+</body>
+</html>

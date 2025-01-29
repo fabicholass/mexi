@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEXIPISO</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="/path/to/MexiWebsiteLogo.ico">
+    <style>
+      body {
+        background: url("images/FondoDescarga.png") no-repeat center center fixed;
+        background-size: cover;
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* ANIMASION PARA EL LOGO DE PESIMISMO */
+      @keyframes fadeInFromTop {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ANIMASION PARA EL POTON DE DOWNLOAD */
+      @keyframes fadeInFromRight {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ANIMASION PARA EL POTON DE FLPLS */
+      @keyframes fadeInFromLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .logo img {
+        position: relative;
+        top: 20px;
+        animation: fadeInFromTop 2s ease-out;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      .downloadlist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding: 0;
+        list-style: none;
+        margin: 0;
+      }
+      
+      .btn {
+        display: inline-block;
+        width: 200px;
+        height: 100px;
+      }
+      
+      .center {
+        width: auto;
+        height: auto;
+        margin: 20px;
+        text-align: center;
+      }
+
+      .esviernes {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      @media (max-width: 768px) {
+        .logo img {
+          width: 80%;
+          top: 10px;
+        }
+        
+        .btn {
+          width: 150px;
+          height: 75px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .btn {
+          width: 100px;
+          height: 50px;
+        }
+        
+        .logo img {
+          width: 100%;
+          height: auto;
+        }
+        
+        .esviernes {
+          bottom: 10px;
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <div class="logo">
+        <img src="/images/MexipisoLogo.png" alt="Mexipiso Logo">
+      </div>
+      <ul class="downloadlist"> 
+        <li>
+          <a href="https://mexipiso.com/snas" class='btn'> 
+            <img src="/images/download_button.png" style='height: 100%; width: 100%; object-fit: fill;'>
+          </a>
+        </li>
+        <li>
+          <a href="https://mexipiso.com/fright" class='btn'> 
+            <img src="/images/flpsBtn.png" style='height: 100%; width: 100%; object-fit: fill;'>
+          </a>
+        </li>
+      </ul>
+      <div class="esviernes">
+        <a href="https://mexipiso.com/snas" class='btn'> 
+          <img src="/images/5.png" style='height: 100%; width: 100%; object-fit: fill;'>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

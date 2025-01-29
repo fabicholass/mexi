@@ -1,0 +1,69 @@
+  <main class="container flex flex-column gap-4">
+    <div class="neverball-box in-game:hidden">
+      <h1><span class="neverball-text">Play Neverball</span></h1>
+      <div id="progress" class="progress-bar">
+        <div class="progress-bar__value">
+          <div class="progress-bar__tile star" style="--num: 0;"></div>
+          <div class="progress-bar__tile star" style="--num: 1;"></div>
+          <div class="progress-bar__tile star" style="--num: 2;"></div>
+          <div class="progress-bar__tile star" style="--num: 3;"></div>
+          <div class="progress-bar__tile star" style="--num: 4;"></div>
+          <div class="progress-bar__tile star" style="--num: 5;"></div>
+          <div class="progress-bar__tile star" style="--num: 6;"></div>
+          <div class="progress-bar__tile star" style="--num: 7;"></div>
+          <div class="progress-bar__tile star" style="--num: 8;"></div>
+          <div class="progress-bar__tile star" style="--num: 9;"></div>
+          <div class="progress-bar__tile star" style="--num: 10;"></div>
+          <div class="progress-bar__tile star" style="--num: 11;"></div>
+          <div class="progress-bar__tile star" style="--num: 12;"></div>
+          <div class="progress-bar__tile star" style="--num: 13;"></div>
+          <div class="progress-bar__tile star" style="--num: 14;"></div>
+          <div class="progress-bar__tile star" style="--num: 15;"></div>
+        </div>
+        <div class="progress-bar__space">
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+          <div class="progress-bar__tile coin"></div>
+        </div>
+      </div>
+
+      <div class="mb-2.5 text-xs flex items-center gap-1">
+        <input type="checkbox" id="fullscreen-checkbox" autocomplete="off">
+        <label for="fullscreen-checkbox">Start game in fullscreen</label>
+      </div>
+
+      <div class="flex gap-2 items-center">
+        <button id="run-button" type="button" class="neverball-button" disabled autocomplete="off">Play Now</button>
+        <div id="status" class="text-white">Downloading...</div>
+        <button id="run-button" type="button" class="neverball-button" disabled autocomplete="off">JUGAR. YA.</button>
+        <div id="status" class="text-white">desca rgando</div>
+      </div>
+    </div>
+
+    <div id="canvas-wrapper" class="hidden in-game:block">
+      <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+
+      <div id="overlay">
+        <button id="fullscreen-button" type="button" class="fullscreen-button"><span>Fullscreen</span></button>
+        <button id="fullscreen-button" type="button" class="fullscreen-button"><span>fullscreen</span></button>
+      </div>
+    </div>
+  </main>
+  <script src="elq.js"></script>
+  <script async src="neverball.js"></script>
+</body>
+
+</html>
