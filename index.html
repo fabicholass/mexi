@@ -199,7 +199,7 @@ body, .button:after {
 
     <canvas id="lantas" style="position: fixed;"></canvas>
 
-    <audio id="oudio" autoplay="true">
+    <audio id="oudio" muted="true" autoplay="true">
       <source src="audio/WEBMIX2.wav" type="audio/wav" />
     </audio>
 
@@ -212,6 +212,7 @@ body, .button:after {
       if (!localStorage.getItem('pasado')) window.location.href = 'login.html';
 
       var audio = document.getElementById('oudio');
+      audio.muted = false;
       audio.volume = 0;
 
       var canvas = document.getElementById('lantas');
