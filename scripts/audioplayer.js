@@ -13,8 +13,6 @@ function comprobarQueTodoEsteBien() {
 
     var tio = JSON.parse(audiovars);
 
-    // boy a mejorar codigo
-
     var initArrKeys = [];
     for (const key in initArr) initArrKeys.push(key);
 
@@ -31,7 +29,6 @@ function comprobarQueTodoEsteBien() {
 
     return false;
 }
-// yo no ago eso esto es lo q nos falta si y eso
 console.log(comprobarQueTodoEsteBien());
 
 if (comprobarQueTodoEsteBien()) localStorage.setItem('audiovars', JSON.stringify(initArr));
