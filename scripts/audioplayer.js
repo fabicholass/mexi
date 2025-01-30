@@ -47,6 +47,7 @@ function getAudioVar(variable) {
     return curVars[variable];
 }
 
+      // el track inisial va a ser el que este primero en el array
 let musicList = ['monowebssite', 'tipiwebsite', 'manzawebsite'];
 var curTrack = 0;
 
