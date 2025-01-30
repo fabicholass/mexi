@@ -47,11 +47,11 @@ function getAudioVar(variable) {
     return curVars[variable];
 }
 
-let musicList = ['monowebssite', 'agua-de-beber'];
+let musicList = ['monowebssite', 'tipiwebsite', 'manzawebsite'];
 var curTrack = 0;
 
 var audio = document.createElement('audio');
-audio.type = 'audio/mp3';
+audio.type = 'audio/ogg';
 audio.autoplay = true;
 changeTrack(getAudioVar('song'));
 document.body.appendChild(audio);
@@ -153,7 +153,7 @@ function setTrack(num) {
 
     num = bound(num, 0, musicList.length-1);
 
-    audio.src = 'tracks/'+musicList[num]+'.mp3';
+    audio.src = 'tracks/'+musicList[num]+'.ogg';
     title.textContent = musicList[num].replaceAll('-', ' ');
   
     time.value = 0;
