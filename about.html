@@ -8,6 +8,7 @@
   <link rel="icon" type="image/x-icon" href="/img/MexiWebsiteLogo.ico">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="/fonts/fixedsys-excelsior/fsex300.css" rel="stylesheet" type="text/css">
 <style>
 @font-face {
  font-family: 'monogram';
@@ -16,7 +17,7 @@
  font-style: normal;
 }
     body{
-        background: #ffffff;
+        background: #222222;
     }
     .ctn {
   display: flex;
@@ -82,18 +83,19 @@
 }
 
 .image-container {
-    position: relative;
     display: flex;
-    width: 25%;
+    width: 600px;
+    height: auto;
     margin: auto;
     top: 50px;
+    position: relative;
+    justify-content: center;
 
     background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
     animation: gradientCycle 5s infinite;
     -webkit-animation: rainbow 18s ease infinite;
     background-size: 1800% 1800%;
-    justify-content: center;
   }
 
   @-webkit-keyframes rainbow {
@@ -125,17 +127,154 @@
     top: 50px;
     text-wrap: balance;
     margin: auto;
+    color: white;
 }
 
+.control-container {
+    justify-content: center;
+    display: flex;
+    height: auto;
+    margin: auto;
+    position: relative;
+    top: 4px;
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+  }
+
+  .text-colores {
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+
+    background-clip: text;
+    color: transparent;
+    padding: 5px;
+  }
+
+  .img-colores {
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+  }
+
+  .oucline{
+    top: 0px;
+    left: 0px;
+
+    position: fixed;
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+
+    padding: 2px;
+    width: 300px;
+    height: auto;
+  }
+
+  .audio-player{
+    top: 0px;
+    left: 0px;
+    background-color: #222222;
+    padding: 10px;
+
+    width: auto;
+    height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #222;
+    color: white;
+  
+  }
+
+  #info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Fixedsys Excelsior";
+    color: rgb(39, 39, 39);
+    width: auto;
+  }
+
+  #controles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+
+/*slyder*/
+
+    input[type='range'] {
+      overflow: hidden;
+      width: 80px;
+      -webkit-appearance: none;
+      background-color: #383838;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px #ffffff;
+    }
+
+    @-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+  }
+
 </style>
+
 </head>
   <body>
-    <div class="image-container"> <img src="img/mexisolo blanco.png" alt="Imagen" style="width: 100%; height: auto;"> </div>
+    <div class="image-container"> <img src="img/mexisolo-dark.png" alt="Imagen" style="width: 100%; height: auto;"> </div>
     <div class="line"></div>
-    <div class="txt-ctn">bueno aca tengo qe escribir la istoriad e mexipiso y todo pero es DESPUES
+    <div class="txt-ctn">bueno aca tengo qe escribir la istoriad e mexipiso y todo pero es DESPUES pernas
     </div>
 
-
+    <div class="oucline">
+        <div id="audio-player" class="audio-player">
+          <div id="info">
+            <span class="text-colores"> Now playing: <span id="track">super track303</span></span>
+              <div> 
+                <span class="text-colores"> <span id="curtime">00:00</span></span>
+                <input type="range" min="1" max="100" value="0" class="slider" id="time">
+                <span class="text-colores"> <span id="duracion">00:00</span></span>
+              </div>
+  
+              <div style="position: relative;">
+                <img class="img-colores" src="img/volume-high.png" alt="play" style="width: 15px; height: auto; position: absolute; left: -25%" id="volimg">
+                <input type="range" min="0" max="100" value="0" class="slider" id="con lumen" style="align-self: center;">
+              </div>
+              
+          </div>
+          <div class="control-container"> 
+            <img src="img/skip-backward.png" alt="play" style="width: 20px; height: auto; cursor: pointer;" id="skipb"> 
+            <img src="img/play.png" alt="play" style="width: 20px; height: auto; cursor: pointer;" id="pause"> 
+            <img src="img/skip-forward.png" alt="play" style="width: 20px; height: auto; cursor: pointer;" id="skipf">
+          </div>
+        </div>
+      </div>
+      </div>
 
   </body>
-</html>
+
+  <script src="scripts/audioplayer.js"></script>

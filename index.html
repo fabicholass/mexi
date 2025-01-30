@@ -22,16 +22,18 @@
   <link rel="icon" type="image/x-icon" href="/img/MexiWebsiteLogo.ico">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="/fonts/fixedsys-excelsior/fsex300.css" rel="stylesheet" type="text/css">
   <style>
 
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 
 }
 
 body, .button:after {
-  background: #ffffff;
+  background: #222222;
 }
 
     .main {
@@ -175,30 +177,121 @@ body, .button:after {
     background-size: 1800% 1800%;
   }
 
-  @-webkit-keyframes rainbow {
+  .control-container {
+    justify-content: center;
+    display: flex;
+    height: auto;
+    margin: auto;
+    position: relative;
+    top: 4px;
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+  }
+
+  .text-colores {
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+
+    background-clip: text;
+    color: transparent;
+    padding: 5px;
+  }
+
+  .img-colores {
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+  }
+
+  .oucline{
+    top: 0px;
+    left: 0px;
+
+    position: fixed;
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+    animation: gradientCycle 5s infinite;
+    -webkit-animation: rainbow 18s ease infinite;
+    background-size: 1800% 1800%;
+
+    padding: 2px;
+    width: 300px;
+    height: auto;
+  }
+
+  .audio-player{
+    top: 0px;
+    left: 0px;
+    background-color: #222222;
+    padding: 10px;
+
+    width: auto;
+    height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #222;
+    color: white;
+  
+  }
+
+  #info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Fixedsys Excelsior";
+    color: rgb(39, 39, 39);
+    width: auto;
+  }
+
+  #controles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+
+/*slyder*/
+
+    input[type='range'] {
+      overflow: hidden;
+      width: 80px;
+      -webkit-appearance: none;
+      background-color: #383838;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px #ffffff;
+    }
+
+    @-webkit-keyframes rainbow {
     0%{background-position:0% 82%}
     50%{background-position:100% 19%}
     100%{background-position:0% 82%}
   }
-  
- /* #overley {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        */
-
   </style>
 </head>
 <body>
   <div class="main">
-  <div class="image-container"> <img src="img/mexisolo blanco.png" alt="Imagen" style="width: 100%; height: auto;"> </div>
+  <div class="image-container"> <img src="img/mexisolo-dark.png" alt="Imagen" style="width: 100%; height: auto;"> </div>
   <div class="ctn"> <div href="" class="button2" style="position: absolute; top: 270px; left: 165px;" >official website</div> </div> <br>
   <div class="line"></div>
     <div class="ctn"> <a href="about.html" class="button b-blue">./ABOUT</a> </div> <br>
@@ -206,59 +299,98 @@ body, .button:after {
     <div class="ctn"> <a href="" class="button b-blue">./GALLERY</a> </div> <br>
     <div class="ctn"> <a href="" class="button b-blue">./CREDITS</a> </div> <br>
 
-    <canvas id="lantas" style="position: fixed;"></canvas>
+
+    <div class="oucline">
+      <div id="audio-player" class="audio-player">
+        <div id="info">
+          <span class="text-colores"> Now playing: <span id="track">super track303</span></span>
+            <div> 
+              <span class="text-colores"> <span id="curtime">00:00</span></span>
+              <input type="range" min="1" max="100" value="0" class="slider" id="time">
+              <span class="text-colores"> <span id="duracion">00:00</span></span>
+            </div>
+
+            <div style="position: relative;">
+              <img class="img-colores" src="img/volume-high.png" alt="play" style="width: 15px; height: auto; position: absolute; left: -25%" id="volimg">
+              <input type="range" min="0" max="100" value="0" class="slider" id="con lumen" style="align-self: center;">
+            </div>
+            
+        </div>
+        <div class="control-container"> 
+          <img src="img/skip-backward.png" alt="play" style="width: 20px; height: auto; cursor: pointer;" id="skipb"> 
+          <img src="img/play.png" alt="play" style="width: 20px; height: auto; cursor: pointer;" id="pause"> 
+          <img src="img/skip-forward.png" alt="play" style="width: 20px; height: auto; cursor: pointer;" id="skipf">
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <canvas id="lantas" style="position: fixed; top: 0px; left: 0px;"></canvas>
   </div>
 
-  <button class="boton" onclick="clearLocalStorage()">borrar cuenta de free fire (localstorage)</button>
+  </div>
 
-    <audio id="oudio" muted="true" autoplay="true">
-      <source src="audio/WEBMIX2.wav" type="audio/wav" />
-    </audio>
+  <button class="boton" onclick="clearLocalStorage()" style="display: flex; position: relative; bottom: 200px; ">borrar cuenta de free fire (localstorage)</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/25.0.0/tween.umd.js"></script>
-    <script src="scripts/player.js"></script>
+    <script src="scripts/audioplayer.js"></script>
 
     <script>
-      var localStorage = Window.localStorage;
+
+      // el track inisial va a ser el que este primero en el array
 
       if (!localStorage.getItem('pasado')) window.location.href = 'login.html';
 
-      var audio = document.getElementById('oudio');
-      audio.muted = false;
-      audio.volume = 0;
-
       var canvas = document.getElementById('lantas');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      canvas.style.opacity = 1;
-      var ctx = canvas.getContext('2d');
-      ctx.fillStyle = "white";
-      ctx.rect(0, 0, window.innerWidth, window.innerHeight);
-      ctx.fill();
 
-      let group = new TWEEN.Group(); // ternan el crack carajo
+      if (localStorage.getItem('aserfade')) {
+        colume.disabled = true;
 
-      const twelen = new TWEEN.Tween(audio);
-      twelen.to({volume: 1}, 2000);
-      twelen.start();
-      twelen.easing(TWEEN.Easing.Sinusoidal.In);
-      group.add(twelen);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.opacity = 1;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = "white";
+        ctx.rect(0, 0, window.innerWidth, window.innerHeight);
+        ctx.fill();
 
-      const si = new TWEEN.Tween(canvas.style);
-      si.to({opacity: 0}, 2000);
-      si.start();
-      si.easing(TWEEN.Easing.Sinusoidal.In);
-      si.onComplete(function() {
-        canvas.remove();
-      });
-      group.add(si);
+        let group = new TWEEN.Group(); // ternan el crack carajo
 
+        audio.volume = 0;
+
+        const twelen = new TWEEN.Tween(audio);
+        twelen.to({volume: getAudioVar('volume')}, 2000);
+        twelen.onComplete(function() {
+          colume.disabled = false;
+        });
+        twelen.start();
+        twelen.easing(TWEEN.Easing.Sinusoidal.In);
+        group.add(twelen);
+
+        const si = new TWEEN.Tween(canvas.style);
+        si.to({opacity: 0}, 2000);
+        si.start();
+        si.easing(TWEEN.Easing.Sinusoidal.In);
+        si.onComplete(function() {
+          canvas.remove();
+        });
+        group.add(si);
+
+        
       function animate() {
-        group.update();
-        requestAnimationFrame(animate);
+          group.update();
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        localStorage.removeItem('aserfade');
+      } else {
+        canvas.remove();
       }
 
-      animate();
+      // SOY MEDIO BOludo
 
       function clearLocalStorage() {
       localStorage.clear(); 
@@ -266,6 +398,5 @@ body, .button:after {
     }
 
     </script>
-
 </body>
 </html>
