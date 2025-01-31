@@ -45,7 +45,7 @@ function getAudioVar(variable) {
 }
 
       // el track inisial va a ser el que este primero en el array
-let musicList = ['monowebssite', 'tipiwebsite', 'manzawebsite'];
+let musicList = ['monowebssite', 'tipiwebsite', 'manzawebsite', 'ktbwebsite'];
 var curTrack = 0;
 
 var audio = document.createElement('audio');
